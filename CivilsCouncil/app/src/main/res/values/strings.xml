@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CivilsCouncil</string>
+    <string name="vote">Vote</string>
 </resources>
