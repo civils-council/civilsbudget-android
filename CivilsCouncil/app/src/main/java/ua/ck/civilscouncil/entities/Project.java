@@ -1,5 +1,7 @@
 package ua.ck.civilscouncil.entities;
 
+import org.json.JSONObject;
+
 /**
  * Created by cheb on 10/3/15.
  */
@@ -12,12 +14,38 @@ public class Project {
     private String createdAt;
     private long likes;
     private String owner;
+    private double budget;
 
 
     public Project() {
     }
 
-    public Project(long id, String title, String description, String source, String picture, String createdAt, long likes, String owner) {
+    public Project(JSONObject json) {
+        try {
+            if (json.has("id"))
+                this.id = json.getLong("id");
+            if (json.has("title"))
+                this.title = json.getString("title");
+            if (json.has("description"))
+                this.description = json.getString("description");
+            if (json.has("source"))
+                this.source = json.getString("source");
+            if (json.has("picture"))
+                this.picture = json.getString("picture");
+            if (json.has("createdAt"))
+                this.createdAt = json.getString("createdAt");
+            if (json.has("likes_count"))
+                this.likes = json.getLong("likes_count");
+            if (json.has("owner"))
+                this.owner = json.getString("owner");
+            if (json.has("budget"))
+                this.budget = json.getLong("budget");
+        } catch (Exception ex) {
+
+        }
+    }
+
+    public Project(long id, String title, String description, String source, String picture, String createdAt, long likes, String owner, double budget) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -26,6 +54,7 @@ public class Project {
         this.createdAt = createdAt;
         this.likes = likes;
         this.owner = owner;
+        this.budget = budget;
     }
 
     @Override
@@ -39,6 +68,7 @@ public class Project {
                 ", createdAt='" + createdAt + '\'' +
                 ", likes=" + likes +
                 ", owner='" + owner + '\'' +
+                ", budget='" + budget + '\'' +
                 '}';
     }
 
@@ -105,5 +135,14 @@ public class Project {
     public void setOwner(String owner) {
         this.owner = owner;
     }
+
+    public double getBudget() {
+        return budget;
+    }
+
+    public void setBudget(long budget) {
+        this.budget = budget;
+    }
+
 }
 
