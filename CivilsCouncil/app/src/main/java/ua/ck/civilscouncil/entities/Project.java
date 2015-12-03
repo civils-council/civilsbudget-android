@@ -6,15 +6,17 @@ import org.json.JSONObject;
  * Created by cheb on 10/3/15.
  */
 public class Project {
+    private boolean vote;
     private long id;
     private String title;
     private String description;
+    private double charge;
     private String source;
     private String picture;
     private String createdAt;
     private long likes;
     private String owner;
-    private double budget;
+    private String avatar_owner;
 
 
     public Project() {
@@ -22,12 +24,16 @@ public class Project {
 
     public Project(JSONObject json) {
         try {
+            if (json.has("vote"))
+                this.vote = json.getBoolean("vote");
             if (json.has("id"))
                 this.id = json.getLong("id");
             if (json.has("title"))
-                this.title = json.getString("title");
+                this.title = json.getString("title").trim();
             if (json.has("description"))
-                this.description = json.getString("description");
+                this.description = json.getString("description").trim();
+            if (json.has("charge"))
+                this.charge = json.getLong("charge");
             if (json.has("source"))
                 this.source = json.getString("source");
             if (json.has("picture"))
@@ -38,28 +44,17 @@ public class Project {
                 this.likes = json.getLong("likes_count");
             if (json.has("owner"))
                 this.owner = json.getString("owner");
-            if (json.has("budget"))
-                this.budget = json.getLong("budget");
+            if (json.has("avatar_owner"))
+                this.avatar_owner = json.getString("avatar_owner");
         } catch (Exception ex) {
 
         }
     }
 
-    public Project(long id, String title, String description, String source, String picture, String createdAt, long likes, String owner, double budget) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.source = source;
-        this.picture = picture;
-        this.createdAt = createdAt;
-        this.likes = likes;
-        this.owner = owner;
-        this.budget = budget;
-    }
-
     @Override
     public String toString() {
         return "Project{" +
+                "vote=" + vote +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
@@ -67,8 +62,9 @@ public class Project {
                 ", picture='" + picture + '\'' +
                 ", createdAt='" + createdAt + '\'' +
                 ", likes=" + likes +
+                ", avatar_owner='" + avatar_owner + '\'' +
                 ", owner='" + owner + '\'' +
-                ", budget='" + budget + '\'' +
+                ", charge='" + charge + '\'' +
                 '}';
     }
 
@@ -136,13 +132,21 @@ public class Project {
         this.owner = owner;
     }
 
-    public double getBudget() {
-        return budget;
+    public double getCharge() {
+        return charge;
     }
 
-    public void setBudget(long budget) {
-        this.budget = budget;
+    public void setCharge(long value) {
+        this.charge = value;
     }
 
+    public String getCreated() {
+        if (createdAt != null && createdAt.length() > 0) {
+            String value = createdAt.substring(0, 10);
+            String[] result = value.split("-");
+            return result[2] + "-" + result[1] + "-" + result[0];
+        }
+        return "";
+    }
 }
 

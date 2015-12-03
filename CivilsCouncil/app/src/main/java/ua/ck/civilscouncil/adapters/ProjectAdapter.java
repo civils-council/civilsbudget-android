@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,7 +41,8 @@ public class ProjectAdapter extends ArrayAdapter<Project>{
                 holder.image = (ImageView) row.findViewById(R.id.projectImage);
                 holder.title = (TextView) row.findViewById(R.id.txt_project_title);
                 holder.description = (TextView) row.findViewById(R.id.txt_project_description);
-                holder.likes = (TextView) row.findViewById(R.id.txt_project_likes);
+                holder.created = (TextView) row.findViewById(R.id.txt_project_created);
+                holder.votes = (TextView) row.findViewById(R.id.txt_project_likes);
                 row.setTag(holder);
             }
         } else {
@@ -52,7 +52,8 @@ public class ProjectAdapter extends ArrayAdapter<Project>{
         Project item = getItem(position);
         holder.title.setText(item.getTitle());
         holder.description.setText(item.getDescription());
-        holder.likes.setText(String.format("%d",item.getLikes()));
+        holder.created.setText(item.getCreated());
+        holder.votes.setText(String.format("%d",item.getLikes()));
 
         AQuery itemAq = aq.recycle(row);
         if (item.getPicture().length() > 0)
@@ -65,6 +66,7 @@ public class ProjectAdapter extends ArrayAdapter<Project>{
         ImageView image;
         TextView title;
         TextView description;
-        TextView likes;
+        TextView created;
+        TextView votes;
     }
 }
