@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/projectImage"
-        android:padding="5dp"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
         android:src="@android:drawable/ic_btn_speak_now"
         android:layout_height="match_parent" />
 
-    <LinearLayout
+    <RelativeLayout
+        android:layout_below='@+id/projectImage'
         android:layout_width="match_parent"
+        android:padding="5dp"
         android:orientation="vertical"
         android:layout_height="match_parent">
 
@@ -28,18 +31,64 @@
 
         <TextView
             android:id="@+id/txt_project_description"
-            android:maxLines="10"
+            android:maxLines="7"
+            android:layout_below="@+id/txt_project_title"
             android:textColor="@android:color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/txt_project_likes"
-            android:singleLine="true"
-            android:gravity="right"
-            android:textColor="@android:color/black"
+        <RelativeLayout
+            android:layout_below="@+id/txt_project_description"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
 
-    </LinearLayout>
-</LinearLayout>
+            <TextView
+                android:id="@+id/labelCreated"
+                android:text="@string/created"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txt_project_created"
+                android:singleLine="true"
+                android:gravity="right"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/labelCreated"
+                android:textColor="@android:color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/labelVotes"
+                android:text="@string/votes"
+                android:layout_below="@+id/labelCreated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txt_project_likes"
+                android:singleLine="true"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@+id/labelCreated"
+                android:layout_toRightOf="@id/labelVotes"
+                android:textColor="@android:color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvDetails"
+                android:background="@drawable/tv_rounded"
+                android:text="@string/details"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:layout_marginRight="5dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

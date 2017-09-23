@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">CivilsCouncil</string>
+    <string name="app_name">Civil\'s Council</string>
     <string name="vote">Vote</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="main_head_description">Civil\'s budget \n in Cherkasy town 2015</string>
+    <string name="created">Created:</string>
+    <string name="votes">Votes:</string>
+    <string name="details">Details</string>
 </resources>

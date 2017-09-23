@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Громадський бюджет</string>
+    <string name="vote">Проголосувати</string>
+    <string name="title_activity_login">Увiйти</string>
+    <string name="main_head_description">Громадський бюджет \n в мiстi Черкаси 2015</string>
+    <string name="created">Створено:</string>
+    <string name="votes">Пiдтримало:</string>
+    <string name="details">Детальнiше</string>
+</resources>

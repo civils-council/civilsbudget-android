@@ -1,14 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ListView
+        android:layout_above="@+id/bottom"
         android:id="@+id/list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <RelativeLayout
+        android:id="@+id/bottom"
+        android:background="#4c5c9c"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/copyLeft"
+            android:text="(c) 2015"
+            android:textSize="10sp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:textColor="@android:color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/main_url"
+            android:text="www.golos.ck.ua"
+            android:textColor="@android:color/white"
+            android:layout_centerInParent="true"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/vk"
+            android:src="@drawable/vk_small"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:layout_width="32dp"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/fb"
+            android:src="@drawable/fb_small"
+            android:layout_toLeftOf="@+id/vk"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"
+            android:layout_width="32dp"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+</RelativeLayout>

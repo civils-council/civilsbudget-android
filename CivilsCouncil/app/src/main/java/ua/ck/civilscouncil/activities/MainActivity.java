@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.androidquery.AQuery;
@@ -30,6 +31,8 @@ public class MainActivity extends Activity {
     AQuery aq;
 
     private ListView listView;
+    private ImageView btnBack;
+    private ImageView btnUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +46,36 @@ public class MainActivity extends Activity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, ProjectDetailsActivity.class);
                 Project selectedProject = (Project) listView.getAdapter().getItem(position);
-                intent.putExtra("id", selectedProject.getId());
-                startActivity(intent);
+                if (selectedProject != null) {
+                    Intent intent = new Intent(MainActivity.this, ProjectDetailsActivity.class);
+                    intent.putExtra("id", selectedProject.getId());
+                    startActivity(intent);
+                }
             }
         });
+
+        View headerView = getLayoutInflater().inflate(R.layout.listview_main_head, null);
+        if (headerView != null) {
+            btnBack = (ImageView) headerView.findViewById(R.id.back);
+            btnUser = (ImageView) headerView.findViewById(R.id.userLogo);
+
+            btnBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+
+            btnUser.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+
+            listView.addHeaderView(headerView);
+        }
 
         getProjectList();
     }

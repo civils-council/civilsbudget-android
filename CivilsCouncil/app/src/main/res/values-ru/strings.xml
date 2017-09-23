@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Гражданский бюджет</string>
+    <string name="vote">Голосовать</string>
+    <string name="title_activity_login">Ввойти</string>
+    <string name="main_head_description">Гражданский бюджет\n в городе Черкассы 2015</string>
+    <string name="created">Создан:</string>
+    <string name="votes">Поддержан:</string>
+    <string name="details">Детальнее</string>
+</resources>
